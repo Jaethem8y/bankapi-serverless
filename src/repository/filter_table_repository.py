@@ -24,13 +24,13 @@ async def filter_data_dict_length(pool, dataDict:DataDict):
 async def filter_fdic_fail(pool, fdicFail:FdicFail):
     query = "SELECT * FROM fdic_fail WHERE 1 = 1 "
     if fdicFail.FDICCertificateNumber != None:
-        query += "AND FDICCertificateNumber = " + str(fdicFail.FDICCertificateNumber) + " "
+        query += "AND FDICCertificateNumber >= " + str(fdicFail.FDICCertificateNumber[0]) + " AND FDICCertificateNumber <= " + str(fdicFail.FDICCertificateNumber[1])+ " "
     if fdicFail.BankName != None:
         query += "AND BankName LIKE \'%" + fdicFail.BankName + "%\' " 
     if fdicFail.City != None:
         query += "AND City LIKE \'%" + fdicFail.City + "%\' "
     if fdicFail.ST != None:
-        query += "AND ST LIKE \'%" + fdicFail.ST + "%\'" 
+        query += "AND ST LIKE \'%" + fdicFail.ST + "%\' " 
     if fdicFail.AcquiringInstitution != None:
         query += "AND AcquiringInstitution LIKE \'%" + fdicFail.AcquiringInstitution + "%\' "
     if fdicFail.ClosingDate != None:
@@ -42,13 +42,13 @@ async def filter_fdic_fail(pool, fdicFail:FdicFail):
 async def filter_fdic_fail_length(pool, fdicFail:FdicFail):
     query = "SELECT COUNT(*) AS length FROM fdic_fail WHERE 1 = 1 "
     if fdicFail.FDICCertificateNumber != None:
-        query += "AND FDICCertificateNumber >= " + str(fdicFail.FDICCertificateNumber[0]) + " AND FDICCertificateNumber <= " + str(fdicFail.FDICCertificateNumber[1]) + " "
+        query += "AND FDICCertificateNumber >= " + str(fdicFail.FDICCertificateNumber[0]) + " AND FDICCertificateNumber <= " + str(fdicFail.FDICCertificateNumber[1])+ " "
     if fdicFail.BankName != None:
         query += "AND BankName LIKE \'%" + fdicFail.BankName + "%\' " 
     if fdicFail.City != None:
         query += "AND City LIKE \'%" + fdicFail.City + "%\' "
     if fdicFail.ST != None:
-        query += "AND ST LIKE \'%" + fdicFail.ST + "%\'" 
+        query += "AND ST LIKE \'%" + fdicFail.ST + "%\' " 
     if fdicFail.AcquiringInstitution != None:
         query += "AND AcquiringInstitution LIKE \'%" + fdicFail.AcquiringInstitution + "%\' "
     if fdicFail.ClosingDate != None:
@@ -79,7 +79,7 @@ async def filter_single_table(pool, table_name, singleTable:SingleTable):
     return await sql.get_multiple_rows(pool,query)
 
 async def filter_single_table_length(pool, table_name, singleTable:SingleTable):
-    query = "SELECT COUUNT(*) AS length FROM " + table_name + " WHERE 1 = 1 "
+    query = "SELECT COUNT(*) AS length FROM " + table_name + " WHERE 1 = 1 "
     score = table_name[6:]
     if singleTable.bank_id != None:
         query += "AND bank_id >= " + str(singleTable.bank_id[0]) + " AND bank_id <= " + str(singleTable.bank_id[1]) + " "
@@ -95,7 +95,7 @@ async def filter_single_table_length(pool, table_name, singleTable:SingleTable):
         start_score = singleTable.score[0]
         end_score = singleTable.score[1]
         query += "AND " + score + " >= " + str(start_score) + " AND " + score + " <= " + str(end_score) + " "
-    query += "Limit " +str(singleTable.start) + "," + str(singleTable.start+1000) +";"
+    query += ";"
     print(query)
     return await sql.get_multiple_rows(pool,query)
 

@@ -16,6 +16,16 @@ description = """
     if the GET request url changes to url_to_server/single/data_dict?start=100, then the result would be from 100th row to 1100th row
 
     To specifiy the requirements, which would corresponds to WHERE clause in SQL, the request needs to be made with POST which will be describe below
+
+### For the posts method, each of them contrains example request body.
+
+### IMPORTANT ###
+    API can be tested using clicking the method and clicking the try out button
+        If table_name is required, type in CALL8786 if you want to use default example. 
+
+    Any table but data_dict and fdic_fail have the same structure. 
+    Therefore when POST Request is made, Request body of all the table will be same but data_dict and fdic_fail
+    The "score" in object attribute for request body represents the table name which correspondes to the which evluation it matches.
 """
 
 tags_metadata = [
