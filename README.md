@@ -2,4 +2,3 @@
 
 - zip -g ./function.zip -r src
 - zip -r9 ../../../../function.zip .
-# bankapi-serverless
