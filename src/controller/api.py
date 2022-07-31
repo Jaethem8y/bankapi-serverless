@@ -1,4 +1,3 @@
-from sys import prefix
 from fastapi import APIRouter
 
 from src.controller import util_controller

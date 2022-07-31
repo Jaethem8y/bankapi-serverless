@@ -18,3 +18,8 @@ async def filter_single_table(pool, table_name, singleTable:SingleTable):
     if table_name != "data_dict" and table_name != "fdic_fail":
         table_name = "table_" + table_name
     return await repository.filter_single_table(pool,table_name, singleTable)
+
+async def filter_single_table_length(pool, table_name, singleTable:SingleTable):
+    if table_name != "data_dict" and table_name != "fdic_fail":
+        table_name = "table_" + table_name
+    return await repository.filter_single_table_length(pool,table_name, singleTable)

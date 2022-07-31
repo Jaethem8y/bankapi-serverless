@@ -5,6 +5,7 @@ from mangum import Mangum
 
 from src.db import host, user, password, port, database
 from src.controller.api import router as api_router
+from src.documentation import description, tags_metadata
 
 import aiomysql
 
@@ -17,13 +18,14 @@ middleware = [
         allow_headers=['*']
     )
 ]
+
 app = FastAPI(
     title="Bank API",
-    # description=description,
-    version="1.0.0",
-    # openapi_tags=tags_metadata,
+    description=description,
+    version="2.0.0",
+    openapi_tags=tags_metadata,
     middleware=middleware,
-    root_path="/dev",
+    # root_path="/dev",
     docs_url='/docs',
     # openapi_url='/dev/openapi.json', 
     redoc_url=None
@@ -40,7 +42,7 @@ async def db_session_middleware(request: Request, call_next):
     response = await call_next(request)
     return response
 
-@app.get(path="/")
+@app.get(path="/", tags=["useless_intro"])
 async def getIndex(request:Request):
   return "Bank API Resource"
 
