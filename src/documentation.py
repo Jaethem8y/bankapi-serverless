@@ -1,9 +1,7 @@
 description = """
-#### Authors and Acknowledgement
-    This API consumes data from bank_database which is built by Dr. Eric Manley and Dr. Sean Severe of Department of Computer Science and Department of Economics at Drake University. Without their supervision and help, this API could not be brought. 
-    
-    The authors of this API are Jaehyeok Choi and Jacob Danner, both of who are seniors at Drake Univeristy studying computer science.
-    
+#### Acknowledgement and Contacts
+    This API consumes data from bank_database which is built by Dr. Eric Manley and Dr. Sean Severe of Department of Computer Science and Department of Economics at Drake University.
+        
     The source code of this API is available at https://github.com/Jaethem8y/bankapi-serverless
 
     In case of error, please inform authors at jaehyeok.choi@drake.edu

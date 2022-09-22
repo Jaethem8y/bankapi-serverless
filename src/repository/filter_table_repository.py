@@ -9,7 +9,7 @@ async def filter_data_dict(pool, dataDict:DataDict):
         query += "AND item_code LIKE \'%" + dataDict.item_code + "%\' "
     if dataDict.meaning != None:
         query += "AND meaning LIKE \'%" + dataDict.meaning + "%\' "
-    query += "Limit " +str(dataDict.start) + "," + str(dataDict.start+1000) +";"
+    query += "Limit " +str(dataDict.start) + " , 1000;"
     return await sql.get_multiple_rows(pool,query)
 
 async def filter_data_dict_length(pool, dataDict:DataDict):
@@ -35,7 +35,7 @@ async def filter_fdic_fail(pool, fdicFail:FdicFail):
         query += "AND AcquiringInstitution LIKE \'%" + fdicFail.AcquiringInstitution + "%\' "
     if fdicFail.ClosingDate != None:
         query += "AND ClosingDate BETWEEN " "\'"+ fdicFail.ClosingDate[0] +"\'" + "AND " + "\'" + fdicFail.ClosingDate[1] + "\' "
-    query += "Limit " +str(fdicFail.start) + "," + str(fdicFail.start+1000) +";"
+    query += "Limit " +str(fdicFail.start) + ", 1000 ;"
     print(query)
     return await sql.get_multiple_rows(pool,query)
 
@@ -74,7 +74,7 @@ async def filter_single_table(pool, table_name, singleTable:SingleTable):
         start_score = singleTable.score[0]
         end_score = singleTable.score[1]
         query += "AND " + score + " >= " + str(start_score) + " AND " + score + " <= " + str(end_score) + " "
-    query += "Limit " +str(singleTable.start) + "," + str(singleTable.start+1000) +";"
+    query += "Limit " +str(singleTable.start) + ", 1000 ;"
     print(query)
     return await sql.get_multiple_rows(pool,query)
 
