@@ -36,6 +36,11 @@ async def _startup():
     app.state.pool = await aiomysql.create_pool(host=host, port=port, user=user, password=password, db=database)
     print("startup done")
 
+@app.on_event("shutdown")
+async def shutdown():
+    await app.state.pool.wait_closed()
+
+
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):
     request.state.pool = app.state.pool
