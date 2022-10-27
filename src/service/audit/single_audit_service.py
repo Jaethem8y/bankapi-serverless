@@ -1,4 +1,4 @@
-from src.repository import single_table_repository as repository
+from src.repository.audit import single_audit_repository as repository
 
 # query table by table_name
 async def get_single_table(pool, table_name:str, start:int):

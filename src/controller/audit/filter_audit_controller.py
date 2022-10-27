@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 
-from src.service import filter_table_service as service
+from src.service.audit import filter_audit_service as service
 
 from src.DTO.search_filter import DataDict, FdicFail, SingleTable
 

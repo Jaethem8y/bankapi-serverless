@@ -1,4 +1,4 @@
-from src.repository import table_length_repository as repository
+from src.repository.audit import audit_length_repository as repository
 
 # query single table length (# of rows)
 async def get_single_table_length(pool, table_name:str):

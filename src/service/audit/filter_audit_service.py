@@ -1,4 +1,4 @@
-from src.repository import filter_table_repository as repository
+from src.repository.audit import filter_audit_repository as repository
 
 from src.DTO.search_filter import DataDict, FdicFail, SingleTable
 

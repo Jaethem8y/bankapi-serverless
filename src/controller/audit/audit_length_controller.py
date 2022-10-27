@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 
-from src.service import table_length_service as service
+from src.service.audit import audit_length_service as service
 
 router = APIRouter()
 
