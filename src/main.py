@@ -37,9 +37,8 @@ async def _startup():
     print("startup done")
 
 @app.on_event("shutdown")
-async def shutdown():
+async def _shutdown():
     await app.state.pool.wait_closed()
-
 
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):
@@ -52,4 +51,5 @@ async def getIndex(request:Request):
   return "Bank API Resource"
 
 app.include_router(api_router)
+
 handler = Mangum(app)

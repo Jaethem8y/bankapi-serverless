@@ -9,7 +9,7 @@ router = APIRouter()
 
 
 router.include_router(audit_length_controller.router,prefix="/length")
-router.include_router(single_audit_controller.router,prefix="/audit")
+router.include_router(single_audit_controller.router,prefix="/single")
 router.include_router(filter_audit_controller.router)
 router.include_router(util_controller.router)
 
